@@ -52,9 +52,9 @@ next.addEventListener('click', nextSlide);
 
 let count = 0;
 let shoescounter = 0;
-let badgeCount = 0;  // Added badgeCount variable
+let badgeCount = 0;  
 
-// Function to update the cart menu
+
 function showCartMenu() {
     if (count > 0) {
         cartEmptyMassage.style.display = "none";
@@ -68,8 +68,7 @@ function showCartMenu() {
         totalSum.textContent = "Total: $0";
     }
 }
-
-// Function to update the badge count
+
 function updateBadgeCount() {
     cartBtn.setAttribute("data-badge-content", badgeCount);
     if (badgeCount === 0) {
@@ -79,39 +78,39 @@ function updateBadgeCount() {
     }
 }
 
-// Store the cart data in localStorage
+
 function saveCartData() {
     const cartData = {
         count: count,
         shoescounter: shoescounter,
-        badgeCount: badgeCount  // Save badgeCount to localStorage
+        badgeCount: badgeCount  
     };
     localStorage.setItem("cartData", JSON.stringify(cartData));
 }
 
-// Retrieve the cart data from localStorage
+
 function loadCartData() {
     const savedCartData = localStorage.getItem("cartData");
     if (savedCartData) {
         const cartData = JSON.parse(savedCartData);
         count = cartData.count;
         shoescounter = cartData.shoescounter;
-        badgeCount = cartData.badgeCount;  // Load badgeCount from localStorage
+        badgeCount = cartData.badgeCount; 
         countNo.textContent = count;
         shoescounterNo.textContent = shoescounter;
         showCartMenu();
-        updateBadgeCount();  // Update badge count
+        updateBadgeCount();  
     }
 }
 
-// Increment button click handler
+
 incrementBtn.addEventListener('click', () => {
     count++;
     countNo.textContent = count;
     shoescounter = count;
     shoescounterNo.textContent = shoescounter;
-    badgeCount = count;  // Update badge count with the new count 
-    saveCartData();  // Save the updated cart data
+    badgeCount = count; 
+    saveCartData(); 
 });
 
 navCartBtn.addEventListener('click', () => {
@@ -134,16 +133,16 @@ cartDeleteBtn.addEventListener('click', () => {
     updateBadgeCount();  // Update badge count
 });
 
-// Decrement button click handler
+
 decrementBtn.addEventListener('click', () => {
     if (count > 0) {
         count--;
-        badgeCount = count;  // Update badge count
+        badgeCount = count; 
     }
     countNo.textContent = count;
     shoescounter = count;
     shoescounterNo.textContent = shoescounter;
-    saveCartData();  // Save the updated cart data
+    saveCartData();  
 });
 
 cartBtn.addEventListener('click', () => {
@@ -158,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let thumbnails = document.querySelectorAll(`#${thumbnailId} .thumb`);
       let slides = document.querySelectorAll(`#${sliderId} .slide`);
 
-      // Add a condition to handle the class name difference between main-slider and lightbox-slider
+     
       if (slides.length === 0) {
           slides = document.querySelectorAll(`#${sliderId} .slide2`);
       }
@@ -173,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
       });
 
-      // Optional: add next and prev buttons functionality
+     
       const prevBtn = document.getElementById(`prev-${sliderId.split('-')[0]}`);
       const nextBtn = document.getElementById(`next-${sliderId.split('-')[0]}`);
 
@@ -202,9 +201,9 @@ let mainSlides = document.querySelectorAll('#main-slider .slide');
 mainSlides.forEach((slide, index) => {
   slide.addEventListener('click', () => {
       let lightboxSlides = document.querySelectorAll('#lightbox-slider .slide2');
-      lightboxSlides.forEach(lightboxSlide => lightboxSlide.classList.remove('active')); // Remove 'active' class from all slides
+      lightboxSlides.forEach(lightboxSlide => lightboxSlide.classList.remove('active')); 
 
-      let currentSlide = index; // Start with the clicked slide
+      let currentSlide = index; 
 
       function showNextSlide() {
           lightboxSlides[currentSlide].classList.remove("active");
@@ -227,7 +226,7 @@ mainSlides.forEach((slide, index) => {
       prevButton.addEventListener('click', showPrevSlide);
       nextButton.addEventListener('click', showNextSlide);
 
-      lightboxSlides[currentSlide].classList.add('active'); // Activate the clicked slide
+      lightboxSlides[currentSlide].classList.add('active'); 
       lightboxOverlay.style.display = 'flex';
   });
 });
